@@ -1,15 +1,19 @@
 
-import Student.StudentHandler;
 
-import java.util.Scanner;
+
+import java.util.*;
+
 
 public class Main {
-    public static void main(String[] args) {
+    public static  void main(String[] args) {
             Scanner scan = new Scanner(System.in);
             String name;
             String department;
             boolean isContinue = true;
-            StudentHandler obj = new StudentHandler();
+            Long id = 0L;
+            Main main = new Main();
+        Map<Long, Map<String,Object>> mapName = new HashMap<>();
+
             while(isContinue) {
                 System.out.println("Enter 1 for add operation" +
                         "Enter 2 for edit operation" +
@@ -18,20 +22,21 @@ public class Main {
 
                 int decision = scan.nextInt();
                 if(decision == 1) {
+                    id++;
                     System.out.println("Enter the name and department");
                     scan.nextLine();
                      name = scan.nextLine();
                      department = scan.nextLine();
-                    System.out.println(obj.addStudent(name,department));
+                    System.out.println(addStudent(name,department,id,mapName));
                 }
                 else if(decision == 2) {
-                    obj.editStudent();
+                    main.editStudent();
                 }
                 else if(decision == 3) {
-                    obj.deleteStudent();
+                   main.deleteStudent();
                 }
                 else if(decision == 4) {
-                    obj.viewStudent();
+                    main.viewAllStudent(mapName);
                 }
 
                 System.out.println("Enter 0 for exit this operation 1 for continue");
@@ -41,5 +46,30 @@ public class Main {
                 }
             }
 
+    }
+
+    public static  Long addStudent(String name, String department, Long id,Map mapName) {
+        Map<String, Object> details = new HashMap<>();
+        details.put("id", id);
+        details.put("name", name);
+        details.put("department", department);
+        System.out.println(details);
+        mapName.put(id,details);
+        System.out.println(mapName);
+        return id;
+    }
+    public void editStudent() {
+
+    }
+    public void deleteStudent() {
+
+    }
+    public void viewStudent() {
+
+    }
+    public void viewAllStudent(Map mapName) {
+        for (Object key : mapName.keySet()) {
+            System.out.println(key + ":" + mapName.get(key));
+        }
     }
 }
