@@ -30,6 +30,8 @@ public class Main {
                     System.out.println(addStudent(name,department,id,mapName));
                 }
                 else if(decision == 2) {
+                    System.out.println("Enter the id");
+                    System.out.println("Enter the field that you want to edit");
                     main.editStudent();
                 }
                 else if(decision == 3) {
